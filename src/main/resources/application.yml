@@ -1,0 +1,4 @@
+springdoc:
+  swagger-ui:
+    path: /swagger/index.html
+    enabled: true
