@@ -21,10 +21,10 @@ public class Booking {
     }
 
     public Date initDate() {
-        return this.period.initDate.getValue();
+        return this.period.getInitDate().getValue();
     }
 
     public Date finishDate() {
-        return this.period.finishDate.getValue();
+        return this.period.getFinishDate().getValue();
     }
 }

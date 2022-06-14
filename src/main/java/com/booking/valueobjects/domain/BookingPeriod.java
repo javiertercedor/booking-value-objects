@@ -1,13 +1,15 @@
 package com.booking.valueobjects.domain;
 
 import com.booking.valueobjects.domain.exception.DataDomainException;
+import lombok.Getter;
 
 import java.util.Date;
 
+@Getter
 public class BookingPeriod {
 
-    public BookingInitDate initDate;
-    public BookingFinishDate finishDate;
+    private BookingInitDate initDate;
+    private BookingFinishDate finishDate;
 
     public BookingPeriod(Date initDate, Date finishDate) {
         this.initDate = new BookingInitDate(initDate);
