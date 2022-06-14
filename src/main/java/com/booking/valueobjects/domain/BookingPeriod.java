@@ -19,7 +19,8 @@ public class BookingPeriod {
     }
 
     private void checkProperlyRangeDates() {
-        if (this.initDate.getValue().after(this.finishDate.getValue())) {
+        final boolean isInitDateAfterFinishDate = this.initDate.getValue().after(this.finishDate.getValue());
+        if (isInitDateAfterFinishDate) {
             throw new DataDomainException("Finish date must be after init date");
         }
     }

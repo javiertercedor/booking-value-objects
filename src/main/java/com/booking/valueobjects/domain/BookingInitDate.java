@@ -11,7 +11,12 @@ public class BookingInitDate {
     private Date value;
 
     public BookingInitDate(Date value) {
-        if (value.before(new Date())) {
+        setValue(value);
+    }
+
+    private void setValue(Date value) {
+        final boolean isValueBeforeToday = value.before(new Date());
+        if (isValueBeforeToday) {
             throw new DataDomainException("Init date must start after today");
         }
         this.value = value;
