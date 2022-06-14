@@ -7,7 +7,11 @@ public class Booking {
     private BookingId id;
     private BookingPeriod period;
 
-    public Booking(Long id, Date initDate, Date finishDate) {
+    public static Booking createBooking(Long id, Date initDate, Date finishDate) {
+        return new Booking(id, initDate, finishDate);
+    }
+
+    private Booking(Long id, Date initDate, Date finishDate) {
         this.id = new BookingId(id);
         this.period = new BookingPeriod(initDate, finishDate);
     }
@@ -15,12 +19,12 @@ public class Booking {
     public Long id() {
         return this.id.getValue();
     }
-    
-    public Date initDate(){
+
+    public Date initDate() {
         return this.period.initDate.getValue();
     }
 
-    public Date finishDate(){
+    public Date finishDate() {
         return this.period.finishDate.getValue();
     }
 }

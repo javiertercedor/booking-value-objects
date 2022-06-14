@@ -20,7 +20,7 @@ public class BookingController {
 
     @PostMapping
     public ResponseEntity<BookingResponse> create(@RequestBody BookingRequest request) {
-        final Booking save = service.save(new Booking(request.getId(), request.getInitDate(), request.getFinishDate()));
+        final Booking save = service.save(Booking.createBooking(request.getId(), request.getInitDate(), request.getFinishDate()));
         return ResponseEntity.ok(new BookingResponse(save.id()));
     }
 }

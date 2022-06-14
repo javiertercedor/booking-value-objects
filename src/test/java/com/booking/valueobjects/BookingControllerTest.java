@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -35,8 +36,8 @@ public class BookingControllerTest {
     @DisplayName("Testing API Booking creation url with properly object")
     void create_properlyDataObject_urlShouldReturn200() throws Exception {
         //given
-        BookingRequest request = new BookingRequest(1L, new Date(), new Date());
-        given(service.save(any())).willReturn(new Booking(1L, new Date(), new Date()));
+        BookingRequest request = new BookingRequest(1L, addDaysToCurrentDate(1), addDaysToCurrentDate(2));
+        given(service.save(any())).willReturn(Booking.createBooking(1L, addDaysToCurrentDate(1), addDaysToCurrentDate(2)));
         //when then
         mockMvc.perform(post("/booking")
                         .accept(MediaType.APPLICATION_JSON)
@@ -55,5 +56,15 @@ public class BookingControllerTest {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    private Date addDaysToCurrentDate(Integer days){
+        Date date = new Date();
+        
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        c.add(Calendar.DATE, days);
+        
+        return c.getTime();
     }
 }

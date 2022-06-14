@@ -28,7 +28,7 @@ class BookingServiceTest {
     @DisplayName("Save method should return Booking object")
     void save_properlyData_shouldReturnBooking() {
         //given
-        Booking booking = new Booking(1L, new Date(), new Date());
+        Booking booking = Booking.createBooking(1L, new Date(), new Date());
         given(repository.save(any(Booking.class))).willReturn(booking);
         //when
         Booking bookingSaved = service.save(booking);

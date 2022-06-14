@@ -15,6 +15,6 @@ public class BookingJpaRepositoryImpl implements BookingRepository {
     @Override
     public Booking save(Booking booking) {
         final BookingDto save = repository.save(new BookingDto(booking.id(), booking.initDate(), booking.finishDate()));
-        return new Booking(save.getId(), save.getInitDate(), save.getFinishDate());
+        return Booking.createBooking(save.getId(), save.getInitDate(), save.getFinishDate());
     }
 }
